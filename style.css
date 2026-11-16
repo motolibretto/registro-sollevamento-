@@ -1,0 +1,231 @@
+/* Registro Sollevamento – landing di prevendita
+   Palette: grigio cemento, inchiostro acciaio, colori del codice brache EN 1492 come segnale. */
+:root {
+  --cemento: #e6e8e4;
+  --carta: #f7f8f5;
+  --acciaio: #1f2a30;
+  --acciaio-2: #4a575e;
+  --linea: #c5cac4;
+  --viola: #6b3fa0;   /* braca 1 t */
+  --verde: #2e8b3e;   /* 2 t */
+  --giallo: #f2c230;  /* 3 t */
+  --grigio: #8c9294;  /* 4 t */
+  --rosso: #c8322b;   /* 5 t */
+  --marrone: #7a4a2a; /* 6 t */
+  --blu: #2459a8;     /* 8 t */
+  --arancio: #e8742a; /* 10 t */
+  --azione: #2459a8;
+  --font: "Archivo", system-ui, sans-serif;
+  --max: 72rem;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  font-family: var(--font);
+  font-size: 1.0625rem;
+  line-height: 1.55;
+  color: var(--acciaio);
+  background: var(--cemento);
+}
+img { max-width: 100%; display: block; }
+a { color: var(--azione); }
+:focus-visible { outline: 3px solid var(--arancio); outline-offset: 3px; }
+
+.wrap { max-width: var(--max); margin: 0 auto; padding: 0 1.5rem; }
+
+/* Fascia colori brache: il segno distintivo */
+.fascia {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  height: 10px;
+}
+.fascia span:nth-child(1) { background: var(--viola); }
+.fascia span:nth-child(2) { background: var(--verde); }
+.fascia span:nth-child(3) { background: var(--giallo); }
+.fascia span:nth-child(4) { background: var(--grigio); }
+.fascia span:nth-child(5) { background: var(--rosso); }
+.fascia span:nth-child(6) { background: var(--marrone); }
+.fascia span:nth-child(7) { background: var(--blu); }
+.fascia span:nth-child(8) { background: var(--arancio); }
+
+/* Testata */
+.testata { padding: 1.25rem 0; }
+.testata .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.marchio {
+  font-weight: 800;
+  font-stretch: 125%;
+  font-size: 1.15rem;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  color: var(--acciaio);
+}
+.testata nav a { font-weight: 600; text-decoration: none; }
+
+/* Hero */
+.hero { padding: 3rem 0 4.5rem; }
+.hero .wrap {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.9fr);
+  gap: 3.5rem;
+  align-items: center;
+}
+.hero h1 {
+  font-size: clamp(2.3rem, 5.2vw, 4.1rem);
+  line-height: 1.02;
+  font-weight: 800;
+  font-stretch: 112%;
+  letter-spacing: -0.025em;
+  margin: 0 0 1.25rem;
+  max-width: 16ch;
+}
+.hero p.sotto { font-size: 1.2rem; max-width: 38ch; color: var(--acciaio-2); margin: 0 0 2rem; }
+.bottone {
+  display: inline-block;
+  background: var(--acciaio);
+  color: var(--carta);
+  font-weight: 700;
+  font-size: 1.05rem;
+  padding: 0.95rem 1.4rem;
+  border-radius: 4px;
+  text-decoration: none;
+  border: 0;
+  cursor: pointer;
+  font-family: inherit;
+}
+.bottone:hover { background: var(--azione); }
+.nota-hero { margin-top: 1rem; font-size: 0.95rem; color: var(--acciaio-2); }
+
+/* Il cartellino: anteprima di un controllo, come il cartellino cucito sulla braca */
+.cartellino {
+  position: relative;
+  background: var(--carta);
+  border-radius: 14px;
+  padding: 1.5rem 1.5rem 1.25rem 2.25rem;
+  box-shadow: 0 1px 0 var(--linea), 0 24px 48px -28px rgba(31, 42, 48, 0.45);
+  max-width: 26rem;
+  justify-self: end;
+  width: 100%;
+}
+.cartellino::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 12px;
+  background: var(--giallo);
+  border-radius: 14px 0 0 14px;
+}
+.cartellino .riga-alta { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
+.cartellino .portata { font-size: 2.6rem; font-weight: 800; font-stretch: 125%; line-height: 1; }
+.cartellino .tipo { font-weight: 700; font-size: 1.05rem; margin: 0.4rem 0 0.15rem; }
+.cartellino .codice { color: var(--acciaio-2); font-size: 0.92rem; }
+.cartellino dl { margin: 1.1rem 0 0; display: grid; grid-template-columns: auto 1fr; gap: 0.45rem 1rem; font-size: 0.97rem; }
+.cartellino dt { color: var(--acciaio-2); }
+.cartellino dd { margin: 0; font-weight: 600; }
+.esito { color: var(--verde); }
+.cartellino .foto {
+  margin-top: 1.1rem;
+  display: flex; gap: 0.5rem;
+}
+.cartellino .foto span {
+  flex: 1; height: 54px; border-radius: 6px;
+  background: repeating-linear-gradient(135deg, #d9dcd6 0 8px, #cfd3cc 8px 16px);
+}
+.cartellino .didascalia { margin-top: 0.9rem; font-size: 0.85rem; color: var(--acciaio-2); }
+
+/* Sezioni */
+section { padding: 4.5rem 0; }
+section.chiaro { background: var(--carta); }
+h2 {
+  font-size: clamp(1.7rem, 3.2vw, 2.4rem);
+  line-height: 1.1;
+  font-weight: 800;
+  font-stretch: 112%;
+  letter-spacing: -0.02em;
+  margin: 0 0 1.5rem;
+  max-width: 24ch;
+}
+.intro { max-width: 60ch; color: var(--acciaio-2); margin: -0.5rem 0 2.25rem; }
+
+/* Problemi: elenco con filo a sinistra, non card */
+.problemi { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+.problemi li { border-left: 3px solid var(--rosso); padding-left: 1rem; }
+.problemi strong { display: block; font-size: 1.1rem; margin-bottom: 0.35rem; }
+
+/* Passi: sono davvero una sequenza */
+.passi { list-style: none; padding: 0; margin: 0; counter-reset: passo; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; }
+.passi li { counter-increment: passo; }
+.passi li::before {
+  content: counter(passo);
+  display: block;
+  font-size: 3rem; font-weight: 800; font-stretch: 125%;
+  line-height: 1; margin-bottom: 0.6rem;
+  color: var(--blu);
+}
+.passi strong { display: block; font-size: 1.15rem; margin-bottom: 0.35rem; }
+
+/* Cosa tiene in ordine */
+.coperture { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; border-top: 1px solid var(--linea); }
+.coperture div { padding: 1.25rem 1.5rem 1.25rem 0; border-bottom: 1px solid var(--linea); }
+.coperture h3 { margin: 0 0 0.3rem; font-size: 1.15rem; }
+.coperture p { margin: 0; color: var(--acciaio-2); }
+
+/* Offerta */
+.offerta .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 3rem; align-items: start; }
+.prezzo { font-size: 1.1rem; }
+.prezzo .cifra { font-size: 3.6rem; font-weight: 800; font-stretch: 125%; line-height: 1; letter-spacing: -0.02em; }
+.prezzo s { color: var(--acciaio-2); margin-left: 0.5rem; }
+.vantaggi { padding-left: 1.2rem; margin: 1.5rem 0 0; }
+.vantaggi li { margin-bottom: 0.6rem; }
+.posti { margin-top: 1.5rem; display: flex; gap: 6px; align-items: center; }
+.posti span { width: 22px; height: 22px; border-radius: 3px; border: 2px solid var(--acciaio); }
+.posti small { margin-left: 0.6rem; color: var(--acciaio-2); font-size: 0.95rem; }
+
+/* Modulo */
+form { background: var(--carta); padding: 2rem; border-radius: 10px; border: 1px solid var(--linea); }
+.campo { margin-bottom: 1.1rem; }
+.campo label { display: block; font-weight: 600; margin-bottom: 0.35rem; font-size: 0.98rem; }
+.campo input, .campo select, .campo textarea {
+  width: 100%;
+  font: inherit;
+  font-size: 1rem;
+  padding: 0.7rem 0.8rem;
+  border: 1.5px solid var(--linea);
+  border-radius: 4px;
+  background: #fff;
+  color: var(--acciaio);
+}
+.campo input:focus, .campo select:focus, .campo textarea:focus { border-color: var(--blu); outline: none; box-shadow: 0 0 0 3px rgba(36, 89, 168, 0.2); }
+.due { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.consenso { display: flex; gap: 0.6rem; align-items: flex-start; font-size: 0.92rem; margin: 0.5rem 0 1.25rem; }
+.consenso input { margin-top: 0.25rem; width: 1.1rem; height: 1.1rem; }
+.nascosto { position: absolute; left: -9999px; }
+form .bottone { width: 100%; }
+
+/* Chi c'è dietro */
+.dietro p { font-size: 1.15rem; max-width: 60ch; }
+
+footer { padding: 2rem 0 3rem; font-size: 0.9rem; color: var(--acciaio-2); }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; }
+
+/* Pagine semplici (grazie, privacy) */
+.semplice { max-width: 46rem; padding: 3rem 1.5rem 5rem; margin: 0 auto; }
+.semplice h1 { font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 800; font-stretch: 112%; line-height: 1.1; letter-spacing: -0.02em; }
+.semplice h2 { font-size: 1.3rem; margin: 2rem 0 0.5rem; }
+
+@media (max-width: 860px) {
+  .hero .wrap, .offerta .wrap { grid-template-columns: 1fr; gap: 2.5rem; }
+  .cartellino { justify-self: start; }
+  .problemi, .passi { grid-template-columns: 1fr; gap: 1.75rem; }
+  .coperture { grid-template-columns: 1fr; }
+  .due { grid-template-columns: 1fr; gap: 0; }
+  section { padding: 3.25rem 0; }
+  form { padding: 1.4rem; }
+  .posti span { width: 18px; height: 18px; }
+  .testata nav a { font-size: 0.95rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { scroll-behavior: auto !important; transition: none !important; }
+}
